@@ -24,6 +24,7 @@ def cosmosdb_input_output(req: func.HttpRequest, inputDoc: func.DocumentList,
             updated_count = count + 1
             document["Count"] = updated_count
         outputDoc.set(inputDoc)
+        
     
     return func.HttpResponse(json.dumps(count_info), status_code=200,
                              mimetype="application/json")
