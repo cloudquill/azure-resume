@@ -1,1 +1,7 @@
 .venv/
+*.json
+*.sln
+.mono
+.vscode
+__queuestorage__
+__blobstorage__
