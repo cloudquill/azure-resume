@@ -7,11 +7,11 @@ app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
 @app.function_name(name="cosmosdb_input_output")
 @app.route(route="getcount", auth_level=func.AuthLevel.ANONYMOUS)
-@app.cosmos_db_input_v3(arg_name="inputDoc", database_name="AzureResume",
-                        collection_name="Counter", sql_query="SELECT * FROM c", 
-                        connection_string_setting="AzureResumeConnectionString")
-@app.cosmos_db_output_v3(arg_name="outputDoc", database_name="AzureResume", 
-                         collection_name="Counter", connection_string_setting="AzureResumeConnectionString")
+@app.cosmos_db_input(arg_name="inputDoc", database_name="AzureResume",
+                        container_name="Counter", sql_query="SELECT * FROM c", 
+                        connection="AzureResumeConnectionString")
+@app.cosmos_db_output(arg_name="outputDoc", database_name="AzureResume", 
+                         container_name="Counter", connection="AzureResumeConnectionString")
 def cosmosdb_input_output(req: func.HttpRequest, inputDoc: func.DocumentList, 
                           outputDoc: func.Out[func.DocumentList]) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
